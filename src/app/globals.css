@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-white text-ink font-sans antialiased; }
+  h1, h2, h3, h4 { @apply font-display text-brand-dark tracking-tight; }
+  ::selection { @apply bg-brand-light text-brand-dark; }
+  :focus-visible { @apply outline-none ring-2 ring-brand ring-offset-2; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold
+           transition-all duration-200 active:scale-[.98] disabled:opacity-60 disabled:pointer-events-none;
+  }
+  .btn-primary { @apply btn bg-brand text-white shadow-soft hover:bg-brand-dark hover:shadow-lift; }
+  .btn-light { @apply btn bg-white text-brand-dark shadow-soft hover:bg-brand-bg; }
+  .btn-outline { @apply btn border border-brand/30 text-brand-dark bg-white hover:border-brand hover:bg-brand-bg; }
+  .btn-ghost-light { @apply btn border border-white/40 text-white backdrop-blur hover:bg-white/15; }
+  .btn-whatsapp { @apply btn bg-[#25D366] text-white hover:bg-[#1ebe5b] shadow-soft; }
+
+  .card { @apply rounded-3xl bg-white shadow-soft ring-1 ring-brand-dark/5 transition-all duration-300; }
+  .card-hover { @apply hover:-translate-y-1 hover:shadow-lift; }
+
+  .field-label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .field {
+    @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400
+           transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand-light/40;
+  }
+  .field-error { @apply mt-1 text-xs font-medium text-red-600; }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition
+           border-brand/20 bg-white text-brand-dark hover:border-brand;
+  }
+  .chip-active { @apply border-brand bg-brand text-white hover:border-brand; }
+
+  .eyebrow { @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.2em] text-brand; }
+  .section { @apply py-16 sm:py-24; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
