@@ -1,7 +1,7 @@
 "use client";
 // Formulario de contacto: nombre, correo, teléfono (opcional) y mensaje.
 // Funciona igual que el de cotización: valida con Zod, guarda en Supabase
-// (acción guardarMensaje) y abre WhatsApp.
+// (lib/guardar.js) y abre WhatsApp.
 
 import { useState } from "react";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleCheck, LoaderCircle, MessageCircle, RotateCcw, Send } from "lucide-react";
 import { esquemaContacto } from "@/lib/validacion";
-import { guardarMensaje } from "@/app/acciones";
+import { guardarMensaje } from "@/lib/guardar";
 import { enlaceWhatsApp } from "@/lib/whatsapp";
 import Campo, { estiloCampo } from "@/components/forms/Campo";
 

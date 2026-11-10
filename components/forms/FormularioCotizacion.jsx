@@ -4,7 +4,7 @@
 //  - zodResolver conecta las reglas de lib/validacion.js.
 //  - Al enviar: arma un mensaje con todos los datos y abre WhatsApp.
 //  - Antes de abrir WhatsApp, guarda la solicitud en Supabase con la
-//    acción del servidor guardarCotizacion (app/acciones.js).
+//    función guardarCotizacion (lib/guardar.js).
 
 import { useState } from "react";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleCheck, LoaderCircle, MessageCircle, RotateCcw, Send } from "lucide-react";
 import { esquemaCotizacion } from "@/lib/validacion";
-import { guardarCotizacion } from "@/app/acciones";
+import { guardarCotizacion } from "@/lib/guardar";
 import { enlaceWhatsApp } from "@/lib/whatsapp";
 import Campo, { estiloCampo } from "@/components/forms/Campo";
 import SelectorDestino, { nombreDestino } from "@/components/forms/SelectorDestino";
@@ -73,7 +73,7 @@ export default function FormularioCotizacion({ destinoInicial = "" }) {
   });
 
   // Solo se llama si TODOS los campos pasaron la validación.
-  // Es "async" porque espera la respuesta del servidor (mientras tanto
+  // Es "async" porque espera la respuesta de Supabase (mientras tanto
   // isSubmitting es true y el botón muestra "Enviando…").
   async function alEnviar(datos) {
     setErrorServidor("");

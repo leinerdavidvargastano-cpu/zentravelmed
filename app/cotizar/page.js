@@ -1,9 +1,10 @@
 // Página /cotizar. Si viene de un destino (?destino=cartagena) o de la
 // sección de cruceros (?tipo=cruceros), el destino ya aparece elegido.
+// La URL se lee en el navegador (CotizacionDesdeURL), dentro de <Suspense>.
 
+import { Suspense } from "react";
 import { ClipboardList, MessageCircle, Plane } from "lucide-react";
-import FormularioCotizacion from "@/components/forms/FormularioCotizacion";
-import { obtenerDestino } from "@/lib/destinos";
+import CotizacionDesdeURL from "@/components/forms/CotizacionDesdeURL";
 
 export const metadata = {
   title: "Cotizar viaje",
@@ -16,13 +17,7 @@ const pasos = [
   { icono: Plane, titulo: "Recibes tu propuesta", texto: "Un asesor te arma el plan y te acompaña." },
 ];
 
-export default async function CotizarPage({ searchParams }) {
-  const { destino = "", tipo = "" } = await searchParams;
-
-  // Solo se usa el destino de la URL si existe en la lista
-  let destinoInicial = obtenerDestino(destino) ? destino : "";
-  if (!destinoInicial && tipo === "cruceros") destinoInicial = "cruceros-caribe";
-
+export default function CotizarPage() {
   return (
     <main className="flex-1">
       <section className="fondo-viaje w-full px-4 pb-32 pt-14 md:px-10">
@@ -34,7 +29,10 @@ export default async function CotizarPage({ searchParams }) {
 
       {/* El formulario "sube" sobre el encabezado verde (-mt-24) */}
       <section className="-mt-24 grid w-full gap-8 px-4 pb-16 md:px-10 lg:grid-cols-[1fr_340px]">
-        <FormularioCotizacion destinoInicial={destinoInicial} />
+        {/* Mientras el navegador lee la URL, se ve un esqueleto del formulario */}
+        <Suspense fallback={<div className="esqueleto h-[640px] rounded-3xl" aria-label="Cargando formulario" />}>
+          <CotizacionDesdeURL />
+        </Suspense>
 
         <aside className="h-fit rounded-3xl bg-verde p-8 lg:sticky lg:top-28">
           <h2 className="text-2xl font-bold text-rosa">¿Cómo funciona?</h2>

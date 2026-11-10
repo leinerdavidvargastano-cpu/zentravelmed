@@ -81,13 +81,13 @@ Next.js (App Router) · React · JavaScript · Tailwind CSS · Lucide React · R
 ## Fases
 
 - [x] **Fase 1. Planificación** (este documento)
-- [ ] **Fase 2. Configuración**: crear el proyecto Next.js con Tailwind y los colores
-- [ ] **Fase 3. Estructura base**: menú y pie de página
-- [ ] **Fase 4. Página de inicio**: portada y buscador
-- [ ] **Fase 5. Destinos**: datos, tarjetas, catálogo con filtros y página de detalle
-- [ ] **Fase 6. Mapa**
-- [ ] **Fase 7. Formularios**: cotizar y contacto (con WhatsApp)
-- [ ] **Fase 8. Base de datos**: Supabase
+- [x] **Fase 2. Configuración**: crear el proyecto Next.js con Tailwind y los colores
+- [x] **Fase 3. Estructura base**: menú y pie de página
+- [x] **Fase 4. Página de inicio**: portada y buscador
+- [x] **Fase 5. Destinos**: datos, tarjetas, catálogo con filtros y página de detalle
+- [x] **Fase 6. Mapa**
+- [x] **Fase 7. Formularios**: cotizar y contacto (con WhatsApp)
+- [x] **Fase 8. Base de datos**: Supabase
 - [ ] **Fase 9. Nosotros y textos legales**
 - [ ] **Fase 10. Publicación** en Vercel
 

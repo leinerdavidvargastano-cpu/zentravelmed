@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera, MapPin, Plane } from "lucide-react";
 import { nombreExperiencia } from "@/data/experiencias";
-import { creditoFoto, fotoDestino } from "@/lib/destinos";
+import { creditoFoto, fotoPequena } from "@/lib/destinos";
 
 export default function DestinoCard({ destino }) {
   const credito = creditoFoto(destino);
@@ -20,7 +20,7 @@ export default function DestinoCard({ destino }) {
             porque un enlace no puede ir dentro de otro enlace. */}
         <Link href={detalle} aria-label={`Ver ${destino.nombre}`} className="absolute inset-0">
           <Image
-            src={fotoDestino(destino)}
+            src={fotoPequena(destino)}
             alt={destino.nombre}
             fill
             sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"

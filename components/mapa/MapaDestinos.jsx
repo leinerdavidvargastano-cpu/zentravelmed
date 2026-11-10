@@ -18,7 +18,7 @@ import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { ArrowRight, MapPin, Plane } from "lucide-react";
 import { destinos } from "@/data/destinos";
-import { fotoDestino } from "@/lib/destinos";
+import { fotoPequena } from "@/lib/destinos";
 
 // Solo los destinos que tienen coordenadas (los cruceros no tienen)
 const conCoordenadas = destinos.filter((d) => d.coordenadas);
@@ -122,7 +122,7 @@ export default function MapaDestinos() {
                 <div className="w-60">
                   <div className="relative h-28 overflow-hidden rounded-lg">
                     <Image
-                      src={fotoDestino(d)}
+                      src={fotoPequena(d)}
                       alt={d.nombre}
                       fill
                       sizes="240px"

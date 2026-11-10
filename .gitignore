@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# zip para subir a Hostinger (se genera, no se guarda en git)
+*.zip

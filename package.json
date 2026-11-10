@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postbuild": "node scripts/arreglar-export.mjs",
+    "miniaturas": "node scripts/miniaturas.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^7.0.5",
