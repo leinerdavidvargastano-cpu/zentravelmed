@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Zen Travel Medellín",
+  // En las demás páginas el título queda como "Destinos | Zen Travel Medellín"
+  title: { default: "Zen Travel Medellín", template: "%s | Zen Travel Medellín" },
   description: "Agencia de viajes en Medellín: destinos en Colombia y el mundo.",
 };
 

@@ -52,7 +52,7 @@ export default function Experiencias() {
           <Link
             key={t.titulo}
             href={t.enlace}
-            className="group relative flex h-96 flex-col justify-end overflow-hidden rounded-3xl"
+            className="esqueleto group relative flex h-96 flex-col justify-end overflow-hidden rounded-3xl"
           >
             {/* Foto de fondo: crece un poco al pasar el mouse */}
             <Image

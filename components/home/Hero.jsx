@@ -1,21 +1,8 @@
 // Portada de la página de inicio: título grande y buscador tipo filtro.
-// <Form> de Next.js funciona como un formulario normal: al enviar,
-// va a /destinos con los filtros en la URL, por ejemplo:
-// /destinos?q=cartagena&tipo=playa&region=colombia
+// El buscador está en components/ui/Buscador.jsx porque también
+// se usa en la página de destinos.
 
-import Form from "next/form";
-import { Search } from "lucide-react";
-import { experiencias } from "@/data/experiencias";
-import Selector from "@/components/ui/Selector";
-
-const regiones = [
-  { valor: "colombia", texto: "Colombia" },
-  { valor: "internacional", texto: "Internacional" },
-];
-
-// Clases que se repiten en los campos del buscador
-const etiqueta = "block text-xs font-semibold uppercase tracking-wider text-white/60";
-const campo = "mt-1 w-full bg-transparent font-semibold text-white outline-none";
+import Buscador from "@/components/ui/Buscador";
 
 export default function Hero() {
   return (
@@ -37,44 +24,9 @@ export default function Hero() {
           Playas, montañas, pueblos y ciudades. Te ayudamos a planear el viaje que sueñas.
         </p>
 
-        {/* Buscador */}
-        <Form
-          action="/destinos"
-          className="mt-10 grid gap-4 rounded-2xl border border-white/30 p-4 md:grid-cols-[1fr_1fr_1fr_auto] md:items-center md:gap-0 md:divide-x md:divide-white/20"
-        >
-          <label className="md:px-4">
-            <span className={etiqueta}>Destino</span>
-            <input
-              type="text"
-              name="q"
-              placeholder="¿A dónde quieres ir?"
-              className={`${campo} placeholder:font-normal placeholder:text-white/50`}
-            />
-          </label>
-
-          <div className="md:px-4">
-            <span className={etiqueta}>Experiencia</span>
-            <Selector
-              name="tipo"
-              opciones={experiencias.map((exp) => ({ valor: exp.id, texto: exp.nombre }))}
-            />
-          </div>
-
-          <div className="md:px-4">
-            <span className={etiqueta}>Región</span>
-            <Selector name="region" opciones={regiones} />
-          </div>
-
-          <div className="md:pl-4">
-            <button
-              type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-amarillo px-6 py-3 font-semibold text-negro hover:brightness-110"
-            >
-              <Search size={18} />
-              Buscar
-            </button>
-          </div>
-        </Form>
+        <div className="mt-10">
+          <Buscador />
+        </div>
       </div>
     </section>
   );

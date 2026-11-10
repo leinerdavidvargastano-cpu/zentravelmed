@@ -8,9 +8,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
 
-export default function Selector({ name, opciones, textoVacio = "Todas" }) {
+export default function Selector({ name, opciones, textoVacio = "Todas", valorInicial = "" }) {
   const [abierto, setAbierto] = useState(false);
-  const [valor, setValor] = useState(""); // "" = ninguna opción elegida
+  const [valor, setValor] = useState(valorInicial); // "" = ninguna opción elegida
   const cajaRef = useRef(null);
 
   // Cerrar la lista al hacer clic afuera o al presionar Escape
