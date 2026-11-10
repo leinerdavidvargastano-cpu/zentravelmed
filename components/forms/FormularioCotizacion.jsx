@@ -45,7 +45,7 @@ function mensajeWhatsApp(d) {
     .join("\n");
 }
 
-export default function FormularioCotizacion({ destinoInicial = "" }) {
+export default function FormularioCotizacion({ destinoInicial = "", mensajeInicial = "" }) {
   const [enviado, setEnviado] = useState(null); // datos enviados (o null)
   const [errorServidor, setErrorServidor] = useState("");
 
@@ -66,7 +66,7 @@ export default function FormularioCotizacion({ destinoInicial = "" }) {
       fechaRegreso: "",
       adultos: 2,
       ninos: 0,
-      mensaje: "",
+      mensaje: mensajeInicial,
       acepta: false,
       sitioWeb: "",
     },

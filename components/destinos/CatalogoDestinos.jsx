@@ -7,12 +7,12 @@
 
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { MessageCircle, SearchX, X } from "lucide-react";
+import { SearchX, X } from "lucide-react";
 import Buscador from "@/components/ui/Buscador";
 import DestinoCard from "@/components/destinos/DestinoCard";
 import BotonCargarMas from "@/components/destinos/BotonCargarMas";
 import { filtrarDestinos } from "@/lib/destinos";
-import { enlaceWhatsApp } from "@/lib/whatsapp";
+import NoEncuentras from "@/components/ui/NoEncuentras";
 
 // Cuántas tarjetas se muestran al inicio y cuántas más con cada "Cargar más"
 const POR_PAGINA = 12;
@@ -141,22 +141,8 @@ export default function CatalogoDestinos() {
           </div>
         )}
 
-        {/* "¿No encuentras lo que deseas?" (como en la página actual de la agencia) */}
-        <div className="mt-16 flex flex-col items-center gap-4 rounded-3xl bg-verde px-6 py-10 text-center">
-          <h2 className="text-3xl font-bold text-rosa">¿No encuentras lo que deseas?</h2>
-          <p className="max-w-xl text-white/80">
-            Cuéntanos a dónde quieres ir y armamos el viaje contigo.
-          </p>
-          <a
-            href={enlaceWhatsApp("Hola, no encontré el destino que busco en la página. Quiero viajar a:")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center gap-2 rounded-full bg-amarillo px-6 py-3 font-bold text-negro transition hover:scale-105"
-          >
-            <MessageCircle size={18} />
-            Escríbenos por WhatsApp
-          </a>
-        </div>
+        {/* "¿No encuentras lo que deseas?" (como en la página anterior de la agencia) */}
+        <NoEncuentras />
       </section>
     </main>
   );
