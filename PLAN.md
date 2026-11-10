@@ -10,7 +10,7 @@ Lema: *"Mundo de experiencias"*. No tiene pagos ni carrito.
 | Nombre | Zen Travel Medellín |
 | Dueña | Dayana Ahumada |
 | Correo | zentravelmed@gmail.com |
-| Teléfono / WhatsApp | Por definir |
+| Teléfono / WhatsApp | +57 320 216 4066 |
 | Redes sociales | Existen, pendientes de recibir los enlaces |
 
 ## Paleta de colores
@@ -36,6 +36,7 @@ Referencia de estilo: portada verde con título grande en rosa y buscador con bo
 1. **Inicio**: menú, portada con buscador, destinos de Colombia, destinos internacionales, experiencias, sección "¿Hablamos?", pie de página.
 2. **Destinos**: catálogo con filtro Colombia / Internacional y por categoría.
 3. **Detalle de destino**: fotos, descripción y botón para cotizar.
+3b. **Paquetes turísticos**: tarjetas con foto y lo que incluye (hotel, desayuno, traslados, city tour, asesoría).
 4. **Mapa** (página aparte): mapa con un punto por destino (Leaflet + OpenStreetMap).
 5. **Cotizar viaje**: formulario.
 6. **Contacto**: formulario y botón de WhatsApp para hablar con el asesor.
@@ -92,7 +93,6 @@ Next.js (App Router) · React · JavaScript · Tailwind CSS · Lucide React · R
 
 ## Pendiente de la empresa
 
-- Teléfono / WhatsApp
 - Enlaces de redes sociales
 - Fotos propias de destinos (si las hay)
 - Texto de "Nosotros"

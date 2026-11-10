@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-negro text-white/70">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-3">
+      <div className="grid w-full gap-10 px-4 py-12 md:grid-cols-3 md:px-10">
         {/* Columna 1: logo y lema */}
         <div>
           <div className="flex items-center gap-3">
@@ -63,7 +63,7 @@ export default function Footer() {
             {empresa.telefono && (
               <li className="flex items-center gap-2">
                 <Phone size={18} className="text-amarillo" />
-                <a href={`tel:${empresa.telefono}`} className="hover:text-amarillo">
+                <a href={`tel:${empresa.telefono.replaceAll(" ", "")}`} className="hover:text-amarillo">
                   {empresa.telefono}
                 </a>
               </li>

@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-verde">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <nav className="flex w-full items-center justify-between px-4 py-3 md:px-10">
         {/* Logo + nombre */}
         <Link href="/" className="flex items-center gap-3" onClick={() => setAbierto(false)}>
           <Image
@@ -30,7 +30,7 @@ export default function Navbar() {
         </Link>
 
         {/* Enlaces en computador (se ocultan en pantallas pequeñas) */}
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {enlaces.map((enlace) => (
             <li key={enlace.ruta}>
               <Link
@@ -50,7 +50,7 @@ export default function Navbar() {
         {/* Botón Cotizar en computador */}
         <Link
           href="/cotizar"
-          className="hidden rounded-lg bg-amarillo px-5 py-2 font-semibold text-negro hover:brightness-110 md:block"
+          className="hidden rounded-lg bg-amarillo px-5 py-2 font-semibold text-negro hover:brightness-110 lg:block"
         >
           Cotizar
         </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* Botón ☰ en celular */}
         <button
           onClick={() => setAbierto(!abierto)}
-          className="text-rosa md:hidden"
+          className="text-rosa lg:hidden"
           aria-label={abierto ? "Cerrar menú" : "Abrir menú"}
         >
           {abierto ? <X size={28} /> : <Menu size={28} />}
@@ -67,7 +67,7 @@ export default function Navbar() {
 
       {/* Menú desplegable del celular: solo se muestra si "abierto" es true */}
       {abierto && (
-        <ul className="flex flex-col gap-1 border-t border-white/10 px-4 pb-4 md:hidden">
+        <ul className="flex flex-col gap-1 border-t border-white/10 px-4 pb-4 lg:hidden">
           {enlaces.map((enlace) => (
             <li key={enlace.ruta}>
               <Link

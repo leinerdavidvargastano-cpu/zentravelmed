@@ -8,7 +8,9 @@ export const empresa = {
   lema: "Mundo de experiencias",
   ciudad: "Medellín, Colombia",
   correo: "zentravelmed@gmail.com",
-  telefono: "", // por definir
+  telefono: "+57 320 216 4066", // como se muestra en la página
+  // WhatsApp: 57 (Colombia) + número, sin "+" ni espacios
+  whatsapp: "573202164066",
   redes: {
     instagram: "", // por definir
     facebook: "", // por definir
@@ -20,6 +22,7 @@ export const empresa = {
 export const enlaces = [
   { nombre: "Inicio", ruta: "/" },
   { nombre: "Destinos", ruta: "/destinos" },
+  { nombre: "Paquetes turísticos", ruta: "/paquetes" },
   { nombre: "Mapa", ruta: "/mapa" },
   { nombre: "Nosotros", ruta: "/nosotros" },
   { nombre: "Contacto", ruta: "/contacto" },

@@ -6,19 +6,25 @@
 import Form from "next/form";
 import { Search } from "lucide-react";
 import { experiencias } from "@/data/experiencias";
+import Selector from "@/components/ui/Selector";
 
-// Clases que se repiten en los 3 campos del buscador
+const regiones = [
+  { valor: "colombia", texto: "Colombia" },
+  { valor: "internacional", texto: "Internacional" },
+];
+
+// Clases que se repiten en los campos del buscador
 const etiqueta = "block text-xs font-semibold uppercase tracking-wider text-white/60";
 const campo = "mt-1 w-full bg-transparent font-semibold text-white outline-none";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-verde">
+    <section className="fondo-viaje relative">
       {/* Círculos decorativos (como en la imagen de ejemplo) */}
       <div className="pointer-events-none absolute right-10 top-10 hidden h-64 w-64 rounded-full border border-white/40 lg:block" />
       <div className="pointer-events-none absolute right-6 top-48 hidden h-28 w-28 rounded-full bg-rosa lg:block" />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+      <div className="relative w-full px-4 py-20 md:px-10 md:py-28">
         <p className="inline-block rounded-full bg-amarillo px-3 py-1 text-sm font-semibold text-negro">
           Colombia y el mundo
         </p>
@@ -46,26 +52,18 @@ export default function Hero() {
             />
           </label>
 
-          <label className="md:px-4">
+          <div className="md:px-4">
             <span className={etiqueta}>Experiencia</span>
-            <select name="tipo" className={campo} defaultValue="">
-              <option value="" className="text-negro">Todas</option>
-              {experiencias.map((exp) => (
-                <option key={exp.id} value={exp.id} className="text-negro">
-                  {exp.nombre}
-                </option>
-              ))}
-            </select>
-          </label>
+            <Selector
+              name="tipo"
+              opciones={experiencias.map((exp) => ({ valor: exp.id, texto: exp.nombre }))}
+            />
+          </div>
 
-          <label className="md:px-4">
+          <div className="md:px-4">
             <span className={etiqueta}>Región</span>
-            <select name="region" className={campo} defaultValue="">
-              <option value="" className="text-negro">Todas</option>
-              <option value="colombia" className="text-negro">Colombia</option>
-              <option value="internacional" className="text-negro">Internacional</option>
-            </select>
-          </label>
+            <Selector name="region" opciones={regiones} />
+          </div>
 
           <div className="md:pl-4">
             <button

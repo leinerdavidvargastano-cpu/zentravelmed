@@ -5,14 +5,40 @@
   Cada --color-xxx crea clases de Tailwind:
   bg-verde, text-rosa, border-amarillo, etc.
 */
-@theme inline {
+@theme {
   --color-verde: #0a4834;
   --color-rosa: #ebcad0;
   --color-amarillo: #d3c511;
   --color-negro: #111418;
 
+  /* Animación del botón de WhatsApp: clase "animate-sacudir" */
+  --animate-sacudir: sacudir 4s ease-in-out infinite;
+
+  @keyframes sacudir {
+    0%, 80%, 100% { transform: rotate(0deg); }
+    84% { transform: rotate(-14deg); }
+    88% { transform: rotate(12deg); }
+    92% { transform: rotate(-8deg); }
+    96% { transform: rotate(5deg); }
+  }
+}
+
+/* "inline" porque estas fuentes vienen de otras variables (next/font) */
+@theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+/*
+  Fondo verde con patrón de viaje (maletas, aviones, brújulas...).
+  El dibujo está en public/patron-viaje.svg y se repite como baldosa.
+  Uso: <section className="fondo-viaje">
+*/
+.fondo-viaje {
+  background-color: var(--color-verde);
+  background-image: url("/patron-viaje.svg");
+  background-size: 400px 400px;
+  background-repeat: repeat;
 }
 
 body {
