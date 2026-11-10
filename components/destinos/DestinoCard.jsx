@@ -1,29 +1,32 @@
-// Tarjeta de un destino: foto, nombre, zona, experiencias y botón de cotizar.
+// Tarjeta de un destino: foto, nombre, zona, experiencias y botones.
+// La foto y el nombre llevan al detalle (/destinos/cartagena).
 
 import Image from "next/image";
 import Link from "next/link";
-import { Camera, MapPin, Plane } from "lucide-react";
-import { experiencias } from "@/data/experiencias";
+import { ArrowRight, Camera, MapPin, Plane } from "lucide-react";
+import { nombreExperiencia } from "@/data/experiencias";
 import { creditoFoto, fotoDestino } from "@/lib/destinos";
-
-// Para mostrar "Relajación costera" en vez de "playa"
-const nombreExperiencia = Object.fromEntries(experiencias.map((e) => [e.id, e.nombre]));
 
 export default function DestinoCard({ destino }) {
   const credito = creditoFoto(destino);
+  const detalle = `/destinos/${destino.slug}`;
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Foto */}
       {/* "esqueleto": mientras la foto carga se ve el brillo animado */}
       <div className="esqueleto relative h-52 overflow-hidden">
-        <Image
-          src={fotoDestino(destino)}
-          alt={destino.nombre}
-          fill
-          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition duration-500 group-hover:scale-110"
-        />
+        {/* La foto es un enlace al detalle. El crédito va aparte (afuera del enlace)
+            porque un enlace no puede ir dentro de otro enlace. */}
+        <Link href={detalle} aria-label={`Ver ${destino.nombre}`} className="absolute inset-0">
+          <Image
+            src={fotoDestino(destino)}
+            alt={destino.nombre}
+            fill
+            sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition duration-500 group-hover:scale-110"
+          />
+        </Link>
         {/* Etiqueta de región sobre la foto */}
         <span className="absolute left-3 top-3 rounded-full bg-verde/90 px-3 py-1 text-xs font-semibold text-rosa backdrop-blur">
           {destino.region === "colombia" ? "Colombia" : "Internacional"}
@@ -53,7 +56,11 @@ export default function DestinoCard({ destino }) {
           <MapPin size={14} />
           {destino.zona}
         </p>
-        <h3 className="mt-1 text-xl font-bold text-verde">{destino.nombre}</h3>
+        <h3 className="mt-1 text-xl font-bold text-verde">
+          <Link href={detalle} className="hover:underline">
+            {destino.nombre}
+          </Link>
+        </h3>
         <p className="mt-2 flex-1 text-sm text-negro/75">{destino.descripcion}</p>
 
         {/* Experiencias */}
@@ -65,13 +72,23 @@ export default function DestinoCard({ destino }) {
           ))}
         </ul>
 
-        <Link
-          href={`/cotizar?destino=${destino.slug}`}
-          className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-verde px-4 py-3 font-semibold text-rosa transition hover:bg-amarillo hover:text-negro"
-        >
-          <Plane size={16} />
-          Cotizar este destino
-        </Link>
+        {/* Dos botones: ver el detalle o cotizar directo */}
+        <div className="mt-5 grid grid-cols-2 gap-2">
+          <Link
+            href={detalle}
+            className="flex items-center justify-center gap-1 rounded-xl border-2 border-verde px-3 py-2.5 text-sm font-semibold text-verde transition hover:bg-verde hover:text-rosa"
+          >
+            Ver destino
+            <ArrowRight size={15} />
+          </Link>
+          <Link
+            href={`/cotizar?destino=${destino.slug}`}
+            className="flex items-center justify-center gap-1 rounded-xl bg-verde px-3 py-2.5 text-sm font-semibold text-rosa transition hover:bg-amarillo hover:text-negro"
+          >
+            <Plane size={15} />
+            Cotizar
+          </Link>
+        </div>
       </div>
     </article>
   );

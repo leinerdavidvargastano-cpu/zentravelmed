@@ -8,3 +8,6 @@ export const experiencias = [
   { id: "playa", nombre: "Relajación costera" },
   { id: "cruceros", nombre: "Diversión y cruceros" },
 ];
+
+// Para pasar de id a nombre: nombreExperiencia["playa"] → "Relajación costera"
+export const nombreExperiencia = Object.fromEntries(experiencias.map((e) => [e.id, e.nombre]));
